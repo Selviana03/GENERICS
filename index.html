@@ -1,0 +1,58 @@
+/**
+ * TUGAS PEMROGRAMAN BERORIENTASI OBJEK - SESI 6
+ * NAMA  : SERLIN SELVIANA GIAY
+ * NIM   : 251410030
+ * KELAS : SI2A
+ */
+
+// 1. Membuat class Stack dengan Generics <T>
+class Stack<T> {
+  List<T> _items = [];
+
+  void push(T item) => _items.add(item);
+  T? pop() => _items.isNotEmpty ? _items.removeLast() : null;
+  T? peek() => _items.isNotEmpty ? _items.last : null;
+  
+  void display() => print("Stack contents: $_items");
+}
+
+// 2. Membuat fungsi mergeLists dengan Generics <T>
+List<T> mergeLists<T>(List<T> a, List<T> b) {
+  return [...a, ...b];
+}
+
+// 3. Membuat class Response dengan Generics <T>
+class Response<T> {
+  T? data;
+  String? error;
+
+  Response({this.data, this.error});
+
+  void printStatus() {
+    if (error != null) {
+      print("Error: $error");
+    } else {
+      print("Data: $data");
+    }
+  }
+}
+
+void main() {
+  print("--- Latihan Sesi 6: Generics ---\n");
+
+  // Uji Stack
+  var stack = Stack<int>();
+  stack.push(10);
+  stack.push(20);
+  print("Peek Stack: ${stack.peek()}");
+  stack.display();
+
+  // Uji MergeLists
+  var list1 = [1, 2];
+  var list2 = [3, 4];
+  print("Merged List: ${mergeLists(list1, list2)}");
+
+  // Uji Response
+  var successResponse = Response<String>(data: "Data berhasil dimuat");
+  successResponse.printStatus();
+}
