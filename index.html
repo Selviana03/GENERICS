@@ -1,58 +1,80 @@
-/**
- * TUGAS PEMROGRAMAN BERORIENTASI OBJEK - SESI 6
- * NAMA  : SERLIN SELVIANA GIAY
- * NIM   : 251410030
- * KELAS : SI2A
- */
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Sesi 6 - Generics in Dart</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #FFF5EE; /* Warna oranye lembut */
+            color: #8B4513;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid #DEB887;
+        }
+        h1 { text-align: center; color: #A0522D; font-size: 26px; }
+        .identitas {
+            background-color: #FFF8DC;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #DEB887;
+        }
+        .materi-box {
+            border-left: 5px solid #A0522D;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .bold-text { font-weight: bold; color: #A0522D; }
+        pre { background: #F8F9FA; padding: 10px; border-radius: 5px; border: 1px solid #DDD; overflow-x: auto; }
+    </style>
+</head>
+<body>
 
-// 1. Membuat class Stack dengan Generics <T>
-class Stack<T> {
-  List<T> _items = [];
+<div class="container">
+    <h1>Rangkuman Materi Sesi 6:<br>Generics in Dart</h1>
+    <hr style="border: 1px solid #DEB887; margin-bottom: 20px;">
 
-  void push(T item) => _items.add(item);
-  T? pop() => _items.isNotEmpty ? _items.removeLast() : null;
-  T? peek() => _items.isNotEmpty ? _items.last : null;
-  
-  void display() => print("Stack contents: $_items");
-}
+    <div class="identitas">
+        <p><span class="bold-text">Nama:</span> Serlin Selviana Giay</p>
+        <p><span class="bold-text">NIM:</span> 251410030</p>
+        <p><span class="bold-text">Kelas:</span> SI2A</p>
+    </div>
 
-// 2. Membuat fungsi mergeLists dengan Generics <T>
-List<T> mergeLists<T>(List<T> a, List<T> b) {
-  return [...a, ...b];
-}
+    <div class="materi-box">
+        <h2>Apa itu Generics?</h2>
+        <p>Generics memungkinkan kita membuat kode yang <b>type-safe</b> (aman dari kesalahan tipe data) dan <b>reusable</b> (dapat digunakan kembali untuk berbagai tipe data) tanpa harus menulis ulang kode untuk setiap tipe yang berbeda.</p>
+    </div>
 
-// 3. Membuat class Response dengan Generics <T>
-class Response<T> {
-  T? data;
-  String? error;
+    <div class="materi-box">
+        <h2>Implementasi Latihan</h2>
+        <ul>
+            <li><b>Stack&lt;T&gt;:</b> Struktur data LIFO yang fleksibel untuk tipe data apa pun (int, string, dsb).</li>
+            <li><b>mergeLists&lt;T&gt;:</b> Fungsi untuk menggabungkan dua list dengan tipe data yang sama.</li>
+            <li><b>Response&lt;T&gt;:</b> Wrapper data yang bisa membungkus berbagai model data.</li>
+        </ul>
+    </div>
 
-  Response({this.data, this.error});
+    <div class="materi-box">
+        <h2>Live Demo (DartPad)</h2>
+        <iframe 
+            src="https://dartpad.dev/?id=5c0e154dd50af4a9ac856908061291bc/embed-inline.html?id=5c0e154dd50af4a9ac856908061291bc&theme=light" 
+            style="width: 100%; height: 500px; border: 1px solid #DEB887; border-radius: 10px;">
+        </iframe>
+    </div>
+</div>
 
-  void printStatus() {
-    if (error != null) {
-      print("Error: $error");
-    } else {
-      print("Data: $data");
-    }
-  }
-}
-
-void main() {
-  print("--- Latihan Sesi 6: Generics ---\n");
-
-  // Uji Stack
-  var stack = Stack<int>();
-  stack.push(10);
-  stack.push(20);
-  print("Peek Stack: ${stack.peek()}");
-  stack.display();
-
-  // Uji MergeLists
-  var list1 = [1, 2];
-  var list2 = [3, 4];
-  print("Merged List: ${mergeLists(list1, list2)}");
-
-  // Uji Response
-  var successResponse = Response<String>(data: "Data berhasil dimuat");
-  successResponse.printStatus();
-}
+</body>
+</html>
